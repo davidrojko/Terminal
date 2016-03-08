@@ -82,15 +82,7 @@ func main() {
 
 
 	//h.register <- p
-	log.Println("adsad")
 
-	resp, err http.Get("http://www.google.com")
-
-	req, err http.NewRequest("GET", "http://www.google.com", nil)
-
-
-	req.Header.Add("If-None-Match", `W/"wyzzy"`)
-	resp, err := client.Do(req)
 /*
 	http.Handle("Glavna_Stran", http.FileServer(http.Dir("/home/david/go/max.si/terminal/")))
 	http.ListenAndServe(":8989", nil)
