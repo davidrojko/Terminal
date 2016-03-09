@@ -56,7 +56,7 @@ func (NullWriter) Write([]byte) (int, error) { return 0, nil }
 
 func defaultAssetPath() string {
 	//p, err := build.Default.Import("gary.burd.info/go-websocket-chat", "", build.FindOnly)
-	p, err := build.Default.Import("github.com/johnlauer/serial-port-json-server", "", build.FindOnly)
+	p, err := build.Default.Import("github.com/ChiliPeppr/serial-port-json-server", "", build.FindOnly)
 	if err != nil {
 		return "."
 	}
