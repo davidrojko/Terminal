@@ -88,13 +88,11 @@ func main() {
 
 	//h.register <- p
 
-/*
-	http.Handle("Glavna_Stran", http.FileServer(http.Dir("/home/david/go/max.si/terminal/")))
-	http.ListenAndServe(":8989", nil)
-*/
 
-	go sh.run()
-	log.Println("Port odprt!!!!!!!!!!!!!")
+
+
+
+
 
 
 	flag.Parse()
@@ -135,7 +133,7 @@ func main() {
 	}
 
 	log.Print("Starting server and websocket on " + ip + "" + f.Value.String())
-	//homeTempl = template.Must(template.ParseFiles(filepath.Join(*assets, "home.html")))
+	//homeTempl = template.Must(template.ParseFiles(filepath.Join(*assets, "Glavn_Stran.html")))
 
 	log.Println("The Serial Port JSON Server is now running.")
 	log.Println("If you are using ChiliPeppr, you may go back to it and connect to this server.")
@@ -200,6 +198,7 @@ func main() {
 
 	http.HandleFunc("/", homeHandler)
 	http.HandleFunc("/ws", wsHandler)
+	http.Handle("/static",http.StripPrefix("/static", http.FileServer(http.Dir("./static"))))
 	if err := http.ListenAndServe(*addr, nil); err != nil {
 		fmt.Printf("Error trying to bind to port: %v, so exiting...", err)
 		log.Fatal("Error ListenAndServe:", err)
