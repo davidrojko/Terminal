@@ -289,9 +289,6 @@ func (p *serport) writerNoBuf() {
 
 		didWeOverride := false
 		newData := ""
-		if p.isFeedRateOverrideOn {
-			didWeOverride, newData = doFeedRateOverride(data.data, p.feedRateOverride)
-		}
 
 		if didWeOverride {
 			// We need to reset the gcode and make the qwReport be what we want

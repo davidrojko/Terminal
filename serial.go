@@ -126,10 +126,11 @@ func (sh *serialhub) run() {
 	//s := ser.open()
 	//ser.s := s
 	//ser.write(s, []byte("hello serial data"))
+
 	for {
 		select {
 		case p := <-sh.register:
-			log.Print("Registering a port: ", p.portConf.Name)
+			log.Print("Port odprt:  ", p.portConf.Name)
 			isPrimary := "false"
 			if p.IsPrimary {
 				isPrimary = "true"
@@ -153,6 +154,7 @@ func (sh *serialhub) run() {
 		}
 	}
 }
+
 
 func writeJson(wrj writeRequestJson) {
 	// we'll parse this json request and then do a write() as if

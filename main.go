@@ -73,6 +73,11 @@ func launchSelfLater() {
 	log.Println("Done waiting 5 secs. Now launching...")
 }
 
+
+
+
+
+
 func main() {
 
 //	http.HandleFunc("/", homeHandler)
@@ -88,6 +93,8 @@ func main() {
 	http.ListenAndServe(":8989", nil)
 */
 
+	go sh.run()
+	log.Println("Port odprt!!!!!!!!!!!!!")
 
 
 	flag.Parse()

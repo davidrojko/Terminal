@@ -3,7 +3,7 @@ package main
 //"log"
 //"time"
 
-var availableBufferAlgorithms = []string{"glavni", "timed", "nodemcu", "tinyg", "tinyg_old", "tinyg_linemode", "tinyg_tidmode", "tinygg2", "grbl", "marlin"}
+var availableBufferAlgorithms = []string{"glavni", "tinyg", "tinyg_old"}
 
 //var availableBufferAlgorithms = []string{"default", "tinyg", "tinygg2", "dummypause", "grbl"}
 
