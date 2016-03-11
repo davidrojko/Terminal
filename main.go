@@ -65,6 +65,7 @@ func defaultAssetPath() string {
 
 func homeHandler(c http.ResponseWriter, req *http.Request) {
 	homeTemplate.Execute(c, req.Host)
+
 }
 
 func launchSelfLater() {
@@ -251,7 +252,12 @@ func externalIP() (string, error) {
 	return "", errors.New("are you connected to the network?")
 }
 
-var homeTemplate = template.Must(template.New("home").Parse(homeTemplateHtml))
+
+
+
+var homeTemplate = template.Must(template.Path("./static/x.html"))
+
+
 
 // If you navigate to this server's homepage, you'll get this HTML
 // so you can directly interact with the serial port server
