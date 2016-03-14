@@ -80,6 +80,12 @@ func launchSelfLater() {
 
 
 func main() {
+	go spHandlerOpen("/dev/ttyUSB0", 9600,"", false)
+
+
+	log.Println("Port odprt!")
+
+
 //	http.HandleFunc("/", homeHandler)
 //	http.HandleFunc("/static/", func(w http.ResponseWriter, r *http.Request) {http.ServeFile(w, r, r.URL.Path[1:])})
 	//go SpHandlerOpen()
