@@ -1,7 +1,6 @@
 package main
 
 import (
-	"time"
 	"log"
 	//"net/http"
 	//"encoding/hex"
@@ -37,7 +36,6 @@ func (b *BufferflowDefault) OnIncomingData(data string) {
 //log.Printf("OnIncomingData() start. data:%v\n", data)
 	log.Println("Deluje")
 	log.Println("Id: ", data)
-	time.Sleep(1000 * time.Millisecond)
 }
 
 // Clean out b.sem so it can truly block

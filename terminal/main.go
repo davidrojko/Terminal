@@ -82,16 +82,6 @@ func launchSelfLater() {
 func main() {
 	go spHandlerOpen("/dev/ttyUSB0", 9600,"", false)
 
-
-	log.Println("Port odprt!")
-
-
-
-
-//	http.HandleFunc("/", homeHandler)
-//	http.HandleFunc("/static/", func(w http.ResponseWriter, r *http.Request) {http.ServeFile(w, r, r.URL.Path[1:])})
-	//go SpHandlerOpen()
-	//sh.register <- p
 	flag.Parse()
 	// setup logging
 	log.SetFlags(log.Ldate | log.Ltime | log.Lshortfile)
@@ -262,42 +252,8 @@ const homeTemplateHtml = `<!DOCTYPE html>
 <head>
 <title>Serial Port Example</title>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-<script type="text/javascript">
-    $(function() {
-    var conn;
-    var msg = $("#msg");
-    var log = $("#log");
-    function appendLog(msg) {
-        var d = log[0]
-        var doScroll = d.scrollTop == d.scrollHeight - d.clientHeight;
-        msg.appendTo(log)
-        if (doScroll) {
-            d.scrollTop = d.scrollHeight - d.clientHeight;
-        }
-    }
-    $("#form").submit(function() {
-        if (!conn) {
-            return false;
-        }
-        if (!msg.val()) {
-            return false;
-        }
-        conn.send(msg.val() + "\n");
-        msg.val("");
-        return false
-    });
-    if (window["WebSocket"]) {
-        conn = new WebSocket("ws://{{$}}/ws");
-        conn.onclose = function(evt) {
-            appendLog($("<div><b>Connection closed.</b></div>"))
-        }
-        conn.onmessage = function(evt) {
-            appendLog($("<div/>").text(evt.data))
-        }
-    } else {
-        appendLog($("<div><b>Your browser does not support WebSockets.</b></div>"))
-    }
-    });
+<script type="text/javascript" src="/static/js/skripta.js">
+
 </script>
 <style type="text/css">
 html {
