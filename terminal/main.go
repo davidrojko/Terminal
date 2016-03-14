@@ -86,6 +86,8 @@ func main() {
 	log.Println("Port odprt!")
 
 
+
+
 //	http.HandleFunc("/", homeHandler)
 //	http.HandleFunc("/static/", func(w http.ResponseWriter, r *http.Request) {http.ServeFile(w, r, r.URL.Path[1:])})
 	//go SpHandlerOpen()
@@ -262,11 +264,9 @@ const homeTemplateHtml = `<!DOCTYPE html>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 <script type="text/javascript">
     $(function() {
-
     var conn;
     var msg = $("#msg");
     var log = $("#log");
-
     function appendLog(msg) {
         var d = log[0]
         var doScroll = d.scrollTop == d.scrollHeight - d.clientHeight;
@@ -275,7 +275,6 @@ const homeTemplateHtml = `<!DOCTYPE html>
             d.scrollTop = d.scrollHeight - d.clientHeight;
         }
     }
-
     $("#form").submit(function() {
         if (!conn) {
             return false;
@@ -287,7 +286,6 @@ const homeTemplateHtml = `<!DOCTYPE html>
         msg.val("");
         return false
     });
-
     if (window["WebSocket"]) {
         conn = new WebSocket("ws://{{$}}/ws");
         conn.onclose = function(evt) {
@@ -305,7 +303,6 @@ const homeTemplateHtml = `<!DOCTYPE html>
 html {
     overflow: hidden;
 }
-
 body {
     overflow: hidden;
     padding: 0;
@@ -314,7 +311,6 @@ body {
     height: 100%;
     background: gray;
 }
-
 #log {
     background: white;
     margin: 0;
@@ -326,7 +322,6 @@ body {
     bottom: 3em;
     overflow: auto;
 }
-
 #form {
     padding: 0 0.5em 0 0.5em;
     margin: 0;
@@ -336,7 +331,6 @@ body {
     width: 100%;
     overflow: hidden;
 }
-
 </style>
 </head>
 <body>
