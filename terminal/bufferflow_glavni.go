@@ -58,8 +58,10 @@ func (b *BufferflowDefault) OnIncomingData(data string) {
 	drugi_znak == string([]rune(id)[13])
 */
 
+
 	log.Println("Prvi znak ", prvi_znak, ", zadnji znak ", zadnji_znak)
 
+	return ""
 
 	
 }
