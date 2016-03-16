@@ -7,7 +7,6 @@ import (
 	//"testing"
 	//"regexp"
 	//"strconv"
-	//"time"
 )
 
 
@@ -20,7 +19,10 @@ type BufferflowDefault struct {
 
 var ()
 
-
+func Podatki(podatki string){
+	log.Println("Funkcija podatki")
+	log.Println(podatki)
+}
 
 func (b *BufferflowDefault) Init() {
 	log.Println("Initting default buffer flow (which means no buffering)")
@@ -36,8 +38,10 @@ func (b *BufferflowDefault) BlockUntilReady(cmd string, id string) (bool, bool, 
 }
 
 func (b *BufferflowDefault) OnIncomingData(data string) {
-//log.Printf("OnIncomingData() start. data:%v\n", data)
+	go Podatki(data)
+
 	id := data
+
 
 	var prvi_znak, zadnji_znak string = string([]rune(id)[0]), string([]rune(id)[13])
 
@@ -54,10 +58,9 @@ func (b *BufferflowDefault) OnIncomingData(data string) {
 	drugi_znak == string([]rune(id)[13])
 */
 
-
 	log.Println("Prvi znak ", prvi_znak, ", zadnji znak ", zadnji_znak)
 
-	
+
 	
 }
 

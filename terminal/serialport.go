@@ -142,8 +142,9 @@ func (p *serport) reader() {
 			// writes to the serialport. each bufferflow type will decide
 			// this on its own based on its logic, i.e. tinyg vs grbl vs others
 			//p.b.bufferwatcher..OnIncomingData(data)
-			p.bufferwatcher.OnIncomingData(data)
 
+			p.bufferwatcher.OnIncomingData(data)
+			time.Sleep(2000 * time.Millisecond)
 			// see if the OnIncomingData handled the broadcast back
 			// to the user. this option was added in case the OnIncomingData wanted
 			// to do something fancier or implementation specific, i.e. TinyG Buffer
