@@ -1,7 +1,6 @@
 html {
     overflow: hidden;
 }
-
 body {
     overflow: hidden;
     padding: 0;
@@ -10,7 +9,6 @@ body {
     height: 100%;
     background: gray;
 }
-
 #log {
     background: white;
     margin: 0;
@@ -22,7 +20,6 @@ body {
     bottom: 3em;
     overflow: auto;
 }
-
 #form {
     padding: 0 0.5em 0 0.5em;
     margin: 0;

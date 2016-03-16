@@ -10,10 +10,13 @@ import (
 	//"time"
 )
 
+
+
 type BufferflowDefault struct {
 	Name string
 	Port string
 }
+
 
 var ()
 
@@ -34,8 +37,28 @@ func (b *BufferflowDefault) BlockUntilReady(cmd string, id string) (bool, bool, 
 
 func (b *BufferflowDefault) OnIncomingData(data string) {
 //log.Printf("OnIncomingData() start. data:%v\n", data)
+	id := data
+
+	var prvi_znak, zadnji_znak string = string([]rune(id)[0]), string([]rune(id)[13])
+
 	log.Println("Deluje")
-	log.Println("Id: ", data)
+	log.Println("Id: ",id)
+	if id == "\u0002070092BB6846\u0003"{	//prvi znak = 0002  Zadnji znak = 0003
+		log.Println("Pozdravljen admin")
+	}else{
+		log.Println("Pozdravljen uporabnik")
+	}
+
+/*
+	prvi_znak == string([]rune(id)[0])
+	drugi_znak == string([]rune(id)[13])
+*/
+
+
+	log.Println("Prvi znak ", prvi_znak, ", zadnji znak ", zadnji_znak)
+
+	
+	
 }
 
 // Clean out b.sem so it can truly block

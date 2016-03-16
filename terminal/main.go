@@ -80,7 +80,7 @@ func launchSelfLater() {
 
 
 func main() {
-	go spHandlerOpen("/dev/ttyUSB0", 9600,"", false)
+	go spHandlerOpen("/dev/ttyUSB0", 9600,"", false) //odpre port
 
 	flag.Parse()
 	// setup logging
@@ -248,46 +248,13 @@ var homeTemplate = template.Must(template.New("home").Parse(homeTemplateHtml))
 // If you navigate to this server's homepage, you'll get this HTML
 // so you can directly interact with the serial port server
 const homeTemplateHtml = `<!DOCTYPE html>
+
 <html>
 <head>
 <title>Serial Port Example</title>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-<script type="text/javascript" src="/static/js/skripta.js">
-
-</script>
-<style type="text/css">
-html {
-    overflow: hidden;
-}
-body {
-    overflow: hidden;
-    padding: 0;
-    margin: 0;
-    width: 100%;
-    height: 100%;
-    background: gray;
-}
-#log {
-    background: white;
-    margin: 0;
-    padding: 0.5em 0.5em 0.5em 0.5em;
-    position: absolute;
-    top: 0.5em;
-    left: 0.5em;
-    right: 0.5em;
-    bottom: 3em;
-    overflow: auto;
-}
-#form {
-    padding: 0 0.5em 0 0.5em;
-    margin: 0;
-    position: absolute;
-    bottom: 1em;
-    left: 0px;
-    width: 100%;
-    overflow: hidden;
-}
-</style>
+<script type="text/javascript" src="static/js/skripta.js"></script>
+<link rel="stylesheet" type="text/css" href="static/css/glavni_css.css">
 </head>
 <body>
 <div id="log"></div>

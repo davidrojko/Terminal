@@ -1,9 +1,7 @@
-    $(function() {
-
+$(function() {
     var conn;
     var msg = $("#msg");
     var log = $("#log");
-
     function appendLog(msg) {
         var d = log[0]
         var doScroll = d.scrollTop == d.scrollHeight - d.clientHeight;
@@ -12,7 +10,6 @@
             d.scrollTop = d.scrollHeight - d.clientHeight;
         }
     }
-
     $("#form").submit(function() {
         if (!conn) {
             return false;
@@ -24,7 +21,6 @@
         msg.val("");
         return false
     });
-
     if (window["WebSocket"]) {
         conn = new WebSocket("ws://{{$}}/ws");
         conn.onclose = function(evt) {
