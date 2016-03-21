@@ -254,7 +254,7 @@ const homeTemplateHtml = `<!DOCTYPE html>
 <title>Serial Port Example</title>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 <script type="text/javascript" src="static/js/skripta.js"></script>
-<link rel="stylesheet" type="text/css" href="static/css/glavni_css.css">
+<link rel="stylesheet" type="text/css" href="/static/css/glavni_css.css">
 </head>
 <body>
 <div id="log"></div>

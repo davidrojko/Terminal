@@ -19,10 +19,6 @@ type BufferflowDefault struct {
 
 var ()
 
-func Podatki(podatki string){
-	log.Println("Funkcija podatki")
-	log.Println(podatki)
-}
 
 func (b *BufferflowDefault) Init() {
 	log.Println("Initting default buffer flow (which means no buffering)")
@@ -38,8 +34,6 @@ func (b *BufferflowDefault) BlockUntilReady(cmd string, id string) (bool, bool, 
 }
 
 func (b *BufferflowDefault) OnIncomingData(data string) {
-	go Podatki(data)
-
 	id := data
 
 
@@ -47,10 +41,10 @@ func (b *BufferflowDefault) OnIncomingData(data string) {
 
 	log.Println("Deluje")
 	log.Println("Id: ",id)
-	if id == "\u0002070092BB6846\u0003"{	//prvi znak = 0002  Zadnji znak = 0003
-		log.Println("Pozdravljen admin")
+	if id == "\u0002070092BB6846\u0003"{	//prvi znak = \u0002  Zadnji znak = \u0003
+		log.Println("Pozdravljen uporabnik a")
 	}else{
-		log.Println("Pozdravljen uporabnik")
+		log.Println("Pozdravljen uporabnik b")
 	}
 
 /*
@@ -60,8 +54,6 @@ func (b *BufferflowDefault) OnIncomingData(data string) {
 
 
 	log.Println("Prvi znak ", prvi_znak, ", zadnji znak ", zadnji_znak)
-
-	return ""
 
 	
 }
