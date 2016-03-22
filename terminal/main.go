@@ -66,9 +66,11 @@ func defaultAssetPath() string {
 func homeHandler(c http.ResponseWriter, req *http.Request) {
 	homeTemplate.Execute(c, req.Host)
 
-        c.Header().Add("Content-Type", "test/plain")
+    c.Header().Add("Content-Type", "text/css")
 
-        fs.ServeHTTP(c, req)
+    fs.ServeHTTP(c, req)
+
+
 
 }
 
@@ -84,6 +86,9 @@ var fs = http.FileServer(http.Dir("./static"))
 
 
 func main() {
+
+
+
 	go spHandlerOpen("/dev/ttyUSB0", 9600,"", false) //odpre port
 
 	flag.Parse()
