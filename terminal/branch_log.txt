@@ -1,3 +1,0 @@
-Branch:
-Osnova: Delujoč program, html, css, js v go kodi, port se odpre na začetku programa.
-V1: Html, css, js iz go programa v eksterne datoteke, uporabljen jquery ter vzpostavite nove strani

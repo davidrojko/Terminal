@@ -191,6 +191,9 @@ func main() {
 		log.Fatal("Error ListenAndServe:", err)
 	}
 
+
+	
+
 }
 
 func externalIP() (string, error) {
