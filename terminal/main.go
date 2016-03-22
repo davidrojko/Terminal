@@ -73,10 +73,56 @@ func launchSelfLater() {
 	time.Sleep(2 * 1000 * time.Millisecond)
 	log.Println("Done waiting 5 secs. Now launching...")
 }
+//*******
+
+type Message struct {
+        Ident string `json: ident`
+}
+
+var fs = http.FileServer(http.Dir("webroot"))
+
+func (self *Message) String() string {
+        return self.Ident
+}
+
+var ch = make(chan Message)
+
+func beriText(server *Server) {
+        for {
+                reader := bufio.NewReader(os.Stdin)
+                fmt.Print("Enter text: ")
+                text, _ := reader.ReadString('\n')
+                msg := &Message{text}
+                server.SendAll(msg)
+        }
+}
+
+func ct(wr http.ResponseWriter, r *http.Request) {
+
+        wr.Header().Add("Content-Type", "test/plain")
+
+        fs.ServeHTTP(wr, r)
+}
+
+func main() {
+
+        log.SetFlags(log.Lshortfile)
+
+        server := NewServer("/ws")
+        go server.Listen()
+
+        go beriText(server)
+
+        // static files
+        http.HandleFunc("/", ct)
+
+        log.Fatal(http.ListenAndServe(":8001", nil))
+
+}
 
 
 
-
+//****
 
 
 func main() {
