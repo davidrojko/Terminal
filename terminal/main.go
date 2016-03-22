@@ -66,6 +66,10 @@ func defaultAssetPath() string {
 func homeHandler(c http.ResponseWriter, req *http.Request) {
 	homeTemplate.Execute(c, req.Host)
 
+        c.Header().Add("Content-Type", "test/plain")
+
+        fs.ServeHTTP(c, req)
+
 }
 
 func launchSelfLater() {
@@ -73,56 +77,10 @@ func launchSelfLater() {
 	time.Sleep(2 * 1000 * time.Millisecond)
 	log.Println("Done waiting 5 secs. Now launching...")
 }
-//*******
-
-type Message struct {
-        Ident string `json: ident`
-}
-
-var fs = http.FileServer(http.Dir("webroot"))
-
-func (self *Message) String() string {
-        return self.Ident
-}
-
-var ch = make(chan Message)
-
-func beriText(server *Server) {
-        for {
-                reader := bufio.NewReader(os.Stdin)
-                fmt.Print("Enter text: ")
-                text, _ := reader.ReadString('\n')
-                msg := &Message{text}
-                server.SendAll(msg)
-        }
-}
-
-func ct(wr http.ResponseWriter, r *http.Request) {
-
-        wr.Header().Add("Content-Type", "test/plain")
-
-        fs.ServeHTTP(wr, r)
-}
-
-func main() {
-
-        log.SetFlags(log.Lshortfile)
-
-        server := NewServer("/ws")
-        go server.Listen()
-
-        go beriText(server)
-
-        // static files
-        http.HandleFunc("/", ct)
-
-        log.Fatal(http.ListenAndServe(":8001", nil))
-
-}
 
 
+var fs = http.FileServer(http.Dir("./static"))
 
-//****
 
 
 func main() {
@@ -228,10 +186,10 @@ func main() {
 	//gpio.PreInit()
 	// when the app exits, clean up our gpio ports
 	//defer gpio.CleanupGpio()
-
 	http.HandleFunc("/", homeHandler)
 	http.HandleFunc("/ws", wsHandler)
-	http.Handle("/static",http.StripPrefix("/static", http.FileServer(http.Dir("./static"))))
+	//http.Handle("/static",http.StripPrefix("/static", http.FileServer(http.Dir("./static"))))
+
 	if err := http.ListenAndServe(*addr, nil); err != nil {
 		fmt.Printf("Error trying to bind to port: %v, so exiting...", err)
 		log.Fatal("Error ListenAndServe:", err)
